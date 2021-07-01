@@ -3,27 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3A96993F268D74FF004D2FC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96993E268D74FF004D2FC6 /* AppDelegate.swift */; };
 		3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969940268D74FF004D2FC6 /* SceneDelegate.swift */; };
-		3A969943268D74FF004D2FC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969942268D74FF004D2FC6 /* ViewController.swift */; };
+		3A969943268D74FF004D2FC6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969942268D74FF004D2FC6 /* CategoriesViewController.swift */; };
 		3A969946268D74FF004D2FC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A969944268D74FF004D2FC6 /* Main.storyboard */; };
 		3A969948268D7502004D2FC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A969947268D7502004D2FC6 /* Assets.xcassets */; };
 		3A96994B268D7502004D2FC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A969949268D7502004D2FC6 /* LaunchScreen.storyboard */; };
+		3A969953268D752C004D2FC6 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969952268D752C004D2FC6 /* Network.swift */; };
+		3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969955268D7669004D2FC6 /* ModelJson.swift */; };
+		3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969958268D95EC004D2FC6 /* CategoriesCell.swift */; };
+		B6787791D87BD030C5FD9816 /* Pods_BlackStarWearProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C19EE062E8911DC433665621 /* Pods_BlackStarWearProject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A96993B268D74FE004D2FC6 /* BlackStarWearProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackStarWearProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A96993E268D74FF004D2FC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A969940268D74FF004D2FC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3A969942268D74FF004D2FC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3A969942268D74FF004D2FC6 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		3A969945268D74FF004D2FC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A969947268D7502004D2FC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A96994A268D7502004D2FC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A96994C268D7502004D2FC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A969952268D752C004D2FC6 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		3A969955268D7669004D2FC6 /* ModelJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelJson.swift; sourceTree = "<group>"; };
+		3A969958268D95EC004D2FC6 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
+		A4A82D62DFDF87EAD5B577B1 /* Pods-BlackStarWearProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackStarWearProject.debug.xcconfig"; path = "Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject.debug.xcconfig"; sourceTree = "<group>"; };
+		C19EE062E8911DC433665621 /* Pods_BlackStarWearProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlackStarWearProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD5D4D5E608108F3B1D0CBDB /* Pods-BlackStarWearProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackStarWearProject.release.xcconfig"; path = "Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6787791D87BD030C5FD9816 /* Pods_BlackStarWearProject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		195D9C8CF42D0DA693AAB751 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4A82D62DFDF87EAD5B577B1 /* Pods-BlackStarWearProject.debug.xcconfig */,
+				CD5D4D5E608108F3B1D0CBDB /* Pods-BlackStarWearProject.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2B2C758FF23DA34997A9B52D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C19EE062E8911DC433665621 /* Pods_BlackStarWearProject.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3A969932268D74FE004D2FC6 = {
 			isa = PBXGroup;
 			children = (
 				3A96993D268D74FF004D2FC6 /* BlackStarWearProject */,
 				3A96993C268D74FE004D2FC6 /* Products */,
+				195D9C8CF42D0DA693AAB751 /* Pods */,
+				2B2C758FF23DA34997A9B52D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +86,34 @@
 		3A96993D268D74FF004D2FC6 /* BlackStarWearProject */ = {
 			isa = PBXGroup;
 			children = (
+				3A969957268D959E004D2FC6 /* View */,
+				3A969954268D7655004D2FC6 /* Network */,
 				3A96993E268D74FF004D2FC6 /* AppDelegate.swift */,
 				3A969940268D74FF004D2FC6 /* SceneDelegate.swift */,
-				3A969942268D74FF004D2FC6 /* ViewController.swift */,
 				3A969944268D74FF004D2FC6 /* Main.storyboard */,
 				3A969947268D7502004D2FC6 /* Assets.xcassets */,
 				3A969949268D7502004D2FC6 /* LaunchScreen.storyboard */,
 				3A96994C268D7502004D2FC6 /* Info.plist */,
 			);
 			path = BlackStarWearProject;
+			sourceTree = "<group>";
+		};
+		3A969954268D7655004D2FC6 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3A969952268D752C004D2FC6 /* Network.swift */,
+				3A969955268D7669004D2FC6 /* ModelJson.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3A969957268D959E004D2FC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3A969942268D74FF004D2FC6 /* CategoriesViewController.swift */,
+				3A969958268D95EC004D2FC6 /* CategoriesCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +123,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A96994F268D7502004D2FC6 /* Build configuration list for PBXNativeTarget "BlackStarWearProject" */;
 			buildPhases = (
+				E6E02441E60BDD9CB3D5D88B /* [CP] Check Pods Manifest.lock */,
 				3A969937268D74FE004D2FC6 /* Sources */,
 				3A969938268D74FE004D2FC6 /* Frameworks */,
 				3A969939268D74FE004D2FC6 /* Resources */,
+				48B9378161492F5DC471A07A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,14 +183,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		48B9378161492F5DC471A07A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6E02441E60BDD9CB3D5D88B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlackStarWearProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A969937268D74FE004D2FC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A969943268D74FF004D2FC6 /* ViewController.swift in Sources */,
+				3A969943268D74FF004D2FC6 /* CategoriesViewController.swift in Sources */,
 				3A96993F268D74FF004D2FC6 /* AppDelegate.swift in Sources */,
+				3A969953268D752C004D2FC6 /* Network.swift in Sources */,
+				3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */,
 				3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */,
+				3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +379,7 @@
 		};
 		3A969950268D7502004D2FC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4A82D62DFDF87EAD5B577B1 /* Pods-BlackStarWearProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +399,7 @@
 		};
 		3A969951268D7502004D2FC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD5D4D5E608108F3B1D0CBDB /* Pods-BlackStarWearProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
