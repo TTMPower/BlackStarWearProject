@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A5A3E0F268DD2E000DD4252 /* SubCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5A3E0E268DD2E000DD4252 /* SubCategoriesViewController.swift */; };
 		3A96993F268D74FF004D2FC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96993E268D74FF004D2FC6 /* AppDelegate.swift */; };
 		3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969940268D74FF004D2FC6 /* SceneDelegate.swift */; };
 		3A969943268D74FF004D2FC6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969942268D74FF004D2FC6 /* CategoriesViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A5A3E0E268DD2E000DD4252 /* SubCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesViewController.swift; sourceTree = "<group>"; };
 		3A96993B268D74FE004D2FC6 /* BlackStarWearProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackStarWearProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A96993E268D74FF004D2FC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A969940268D74FF004D2FC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		3A969957268D959E004D2FC6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3A5A3E0E268DD2E000DD4252 /* SubCategoriesViewController.swift */,
 				3A969942268D74FF004D2FC6 /* CategoriesViewController.swift */,
 				3A969958268D95EC004D2FC6 /* CategoriesCell.swift */,
 			);
@@ -234,6 +237,7 @@
 				3A96993F268D74FF004D2FC6 /* AppDelegate.swift in Sources */,
 				3A969953268D752C004D2FC6 /* Network.swift in Sources */,
 				3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */,
+				3A5A3E0F268DD2E000DD4252 /* SubCategoriesViewController.swift in Sources */,
 				3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */,
 				3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */,
 			);

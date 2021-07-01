@@ -22,6 +22,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
+        title = "Категории"
         getData()
     }
     
@@ -63,6 +64,16 @@ extension CategoriesViewController: UITableViewDataSource {
         //        cell.cornerRadius()
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            performSegue(withIdentifier: "segueToSubCategory", sender: self)
+        }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let destination = segue.destination as? SubCategoriesViewController {
+                destination.data = result.values.first?.subcategories?[categoriesTableView.indexPathForSelectedRow!.row]
+            }
+        }
     
     
 }

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Категории товаров-->
+        <!--Categories View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CategoriesViewController" customModule="BlackStarWearProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,14 +82,31 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Z6I-h6-FUB" secondAttribute="trailing" id="Req-EC-zzk"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Категории товаров" image="icons8-jersey-50" landscapeImage="icons8-jersey-50" largeContentSizeImage="icons8-jersey-50" selectedImage="icons8-jersey-50" id="5mJ-PD-kQn"/>
+                    <navigationItem key="navigationItem" id="Cac-7j-zav"/>
                     <connections>
                         <outlet property="categoriesTableView" destination="Z6I-h6-FUB" id="ujY-eP-abj"/>
+                        <segue destination="WSS-RB-vma" kind="show" identifier="segueToSubCategory" id="IoL-O8-bKD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938.39999999999998" y="27.436281859070466"/>
+            <point key="canvasLocation" x="1868" y="26.53673163418291"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QZ2-fP-FOy">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="WSS-RB-vma" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Yt-1g-BqN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IQQ-c0-9Bw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lpu-FC-3as"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9LC-hP-DkD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2652" y="26.53673163418291"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="pNS-qA-JKf">
@@ -102,12 +119,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Gwt-Zx-59x"/>
+                        <segue destination="YEN-CL-iQX" kind="relationship" relationship="viewControllers" id="Gwt-Zx-59x"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VGc-Yu-HbU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarItem title="Категории товаров" image="icons8-jersey-50" landscapeImage="icons8-jersey-50" largeContentSizeImage="icons8-jersey-50" selectedImage="icons8-jersey-50" id="h14-oC-aRT"/>
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="27.455357142857142"/>
+        </scene>
+        <!--Категории товаров-->
+        <scene sceneID="G25-eD-ibF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YEN-CL-iQX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Категории товаров" image="icons8-jersey-50" landscapeImage="icons8-jersey-50" largeContentSizeImage="icons8-jersey-50" selectedImage="icons8-jersey-50" id="5mJ-PD-kQn"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3y8-mG-h54">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TcZ-oz-Ihb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQl-mT-Rzv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.79999999999995" y="26.53673163418291"/>
         </scene>
     </scenes>
     <resources>
