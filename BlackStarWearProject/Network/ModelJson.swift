@@ -11,7 +11,7 @@ struct ModelDataValue: Codable {
     var image: String?
     var iconImage: String?
     var iconImageActive: String?
-    var subcategories: [Subcategory]?
+    var subcategories: [Subcategory]
 
     enum CodingKeys: String, CodingKey {
         case name = "name"

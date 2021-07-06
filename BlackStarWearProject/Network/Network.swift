@@ -17,6 +17,7 @@ struct API {
 class Network {
     static var networkAccess = Network()
     var imageResourse = [ImageResource]()
+    var imageSubResourse = [ImageResource]()
     
     
     func getJsonData( complition: @escaping (ModelData) -> Void) {
