@@ -9,6 +9,7 @@ import UIKit
 
 class SubCatTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var backgroundCell: UIView!
     @IBOutlet weak var subCategoryLabel: UILabel!
     @IBOutlet weak var subCategoryImage: UIImageView!
     

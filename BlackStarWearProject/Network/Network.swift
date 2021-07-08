@@ -12,6 +12,7 @@ import Kingfisher
 struct API {
     static var mainURL = "https://blackstarwear.ru/"
     static var catigoriesURL = "http://blackstarshop.ru/index.php?route=api/v1/categories"
+    static var items = "https://blackstarshop.ru/index.php?route=api/v1/products&cat_id="
 }
 
 class Network {
@@ -20,8 +21,8 @@ class Network {
     var imageSubResourse = [ImageResource]()
     
     
-    func getJsonData( complition: @escaping (ModelData) -> Void) {
-        let urlMain = URL(string: API.catigoriesURL)
+    func getJsonData(url: String, complition: @escaping (ModelData) -> Void) {
+        let urlMain = URL(string: url)
             var request = URLRequest(url: urlMain!)
             request.httpMethod = "GET"
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -32,6 +33,26 @@ class Network {
                     do {
                         let myData = try JSONDecoder().decode(ModelData.self, from: data!)
                         complition(myData)
+                    } catch let error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        task.resume()
+    }
+    
+    func getJsonDataSub(url: String, complition: @escaping (SubCategoryItems) -> Void) {
+        let urlMain = URL(string: url)
+            var request = URLRequest(url: urlMain!)
+            request.httpMethod = "GET"
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if error != nil {
+                    print(error.debugDescription)
+                    return
+                } else if data != nil {
+                    do {
+                        let myData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: Any]
+                        print(myData)
                     } catch let error {
                         print(error.localizedDescription)
                     }

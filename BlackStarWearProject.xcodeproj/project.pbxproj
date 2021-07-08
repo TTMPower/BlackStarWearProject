@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A23982F268F096600AE6117 /* SubCatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A23982E268F096600AE6117 /* SubCatTableViewCell.swift */; };
 		3A239831268F098000AE6117 /* SubCatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A239830268F098000AE6117 /* SubCatViewController.swift */; };
+		3A488A4C2695793F004AC349 /* SubcategoryModelJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A488A4B2695793F004AC349 /* SubcategoryModelJson.swift */; };
 		3A96993F268D74FF004D2FC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A96993E268D74FF004D2FC6 /* AppDelegate.swift */; };
 		3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969940268D74FF004D2FC6 /* SceneDelegate.swift */; };
 		3A969943268D74FF004D2FC6 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969942268D74FF004D2FC6 /* CategoriesViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		3A23982E268F096600AE6117 /* SubCatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCatTableViewCell.swift; sourceTree = "<group>"; };
 		3A239830268F098000AE6117 /* SubCatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCatViewController.swift; sourceTree = "<group>"; };
+		3A488A4B2695793F004AC349 /* SubcategoryModelJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryModelJson.swift; sourceTree = "<group>"; };
 		3A96993B268D74FE004D2FC6 /* BlackStarWearProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlackStarWearProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A96993E268D74FF004D2FC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A969940268D74FF004D2FC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				3A969952268D752C004D2FC6 /* Network.swift */,
+				3A488A4B2695793F004AC349 /* SubcategoryModelJson.swift */,
 				3A969955268D7669004D2FC6 /* ModelJson.swift */,
 			);
 			path = Network;
@@ -242,6 +245,7 @@
 				3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */,
 				3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */,
 				3A23982F268F096600AE6117 /* SubCatTableViewCell.swift in Sources */,
+				3A488A4C2695793F004AC349 /* SubcategoryModelJson.swift in Sources */,
 				3A239831268F098000AE6117 /* SubCatViewController.swift in Sources */,
 				3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */,
 			);

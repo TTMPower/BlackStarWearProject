@@ -15,7 +15,6 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
     var categoriesName = [String]()
     var urlImageCategories = [String]()
     var categoriesImage = [ImageResource]()
-    var arraySubCategories = [Category]()
     
     @IBOutlet weak var categoriesTableView: UITableView!
     override func viewDidLoad() {
@@ -27,19 +26,11 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         getData()
     }
     
-    
-    
     func getData() {
-        Network.networkAccess.getJsonData { complition in
+        Network.networkAccess.getJsonData(url: API.catigoriesURL) { complition in
             DispatchQueue.main.async {
-                self.result = complition.filter({$0.value.name! != "Коллекции"}).filter({$0.value.name! != "Marketplace"}).filter({$0.value.name != "Последний размер"})
+                self.result = complition.filter({$0.value.name! != "Коллекции"}).filter({$0.value.name! != "Marketplace"}).filter({$0.value.name != "Последний размер"}).filter({$0.value.name != "Все товары категории"})
                 for el in self.result.values {
-                    
-//                    for el in el.subcategories {
-//                        self.res = el.iconImage?.replacingOccurrences(of: "", with: "image/catalog/style/modile/icons-03.png")
-//                        }
-//                    }
-//                    el.subcategories.filter({$0.name != "Маски"}).filter({$0.name != "Очки"}).filter({$0.name != "Кошельки"}).filter({$0.name != "COLOR"}).filter({$0.name != "Black Star Mafia"}).filter({$0.name != "DEFORM"}).filter({$0.name != "NINJA"}).filter({$0.name != "Союзмультфильм"}).filter({$0.name != "Bootleg"}).filter({$0.name != "BSW Design"}).filter({$0.name != "RUS"}).filter({$0.name != "LUX"}).filter({$0.name != "Lion"}).filter({$0.name != "Crew"}).filter({$0.name != "WorldWide"}).filter({$0.name != "Коллекция R.U.S."}).filter({$0.name != "Летняя коллекция"}).filter({$0.name != "Pattern"}).filter({$0.name != "Winter collection"}).filter({$0.name != "Generation 13"}).filter({$0.name != "AS"})
                     self.categoriesName.append(el.name!)
                     self.urlImageCategories.append(el.image!)
                     self.categoriesTableView.reloadData()
