@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import SwiftyJSON
 
 struct API {
     static var mainURL = "https://blackstarwear.ru/"
@@ -21,48 +22,51 @@ class Network {
     var imageSubResourse = [ImageResource]()
     
     
+    
     func getJsonData(url: String, complition: @escaping (ModelData) -> Void) {
         let urlMain = URL(string: url)
-            var request = URLRequest(url: urlMain!)
-            request.httpMethod = "GET"
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                    return
-                } else if data != nil {
-                    do {
-                        let myData = try JSONDecoder().decode(ModelData.self, from: data!)
-                        complition(myData)
-                    } catch let error {
-                        print(error.localizedDescription)
-                    }
+        var request = URLRequest(url: urlMain!)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            } else if data != nil {
+                do {
+                    let myData = try JSONDecoder().decode(ModelData.self, from: data!)
+                    complition(myData)
+                } catch let error {
+                    print(error.localizedDescription)
                 }
             }
+        }
         task.resume()
     }
     
-    func getJsonDataSub(url: String, complition: @escaping (SubCategoryItems) -> Void) {
+    func getJsonDataSub(url: String, complition: @escaping ([SubCategoryItems]) -> Void) {
         let urlMain = URL(string: url)
-            var request = URLRequest(url: urlMain!)
-            request.httpMethod = "GET"
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                    return
-                } else if data != nil {
-                    do {
-                        let myData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String: Any]
-                        print(myData)
-                    } catch let error {
-                        print(error.localizedDescription)
+        var request = URLRequest(url: urlMain!)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            } else if data != nil {
+                do {
+                    let jsonData = JSON(data!)
+                    
+                    let array = jsonData.map {
+                        SubCategoryItems(json: $0.1)
                     }
+                    complition(array)
                 }
             }
+        }
         task.resume()
     }
-    
     func getImage(url: String, complition: @escaping (ImageResource) -> Void) {
         let resourse = ImageResource(downloadURL: URL(string: url)!, cacheKey: url)
         complition(resourse)
     }
+    
 }

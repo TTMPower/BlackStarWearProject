@@ -12,36 +12,7 @@ class SubCatViewController: UIViewController, UITableViewDelegate {
     var data: ModelDataValue? = nil
     var iconSubImage = [String]()
     var nameSubImage = [String]()
-    var filterData: ModelDataValue? = nil
-    var id = [SortOrder]()
-    var idInt = Int()
-    var stringId = [String]()
     
-    
-    
-    func getIDS() {
-        for el in data!.subcategories {
-            id.append(el.id!)
-    }
-        id.forEach {(value) in
-            if case .string(let integer) = value {
-                self.stringId.append(integer)
-            }
-            if case .integer(let int) = value {
-                self.idInt = int
-            }
-        }
-        let myString = String(idInt)
-        stringId.append(myString)
-    }
-    
-    func getItems() {
-        for el in stringId {
-            
-            Network.networkAccess.getJsonDataSub(url: API.items + el, complition: { complition in
-        })
-        }
-    }
     
     
 
@@ -50,17 +21,11 @@ class SubCatViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var subTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        for el in data!.subcategories {
+        for el in data?.subcategories ?? [] {
             iconSubImage.append(el.iconImage!)
             nameSubImage.append(el.name!)
         }
-        
         navigatorBar.title = data?.name
-        getIDS()
-        getItems()
-        print(stringId)
-        
-
     }
     
 }
@@ -84,6 +49,14 @@ extension SubCatViewController: UITableViewDataSource {
         cell.backgroundCell.layer.cornerRadius = 10
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "itemsSegue", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? ItemsViewController {
+            let resultCell = data?.subcategories
+            destination.itemDatas = (resultCell?[subTableView.indexPathForSelectedRow!.row])!
+            }
+        }
     
 }

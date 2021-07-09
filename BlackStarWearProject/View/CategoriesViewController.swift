@@ -64,7 +64,7 @@ extension CategoriesViewController: UITableViewDataSource {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SubCatViewController {
-            let resultCell = result.values.sorted(by: {($0.name?.lowercased())! < $1.name!.lowercased()})
+            let resultCell = result.values.sorted(by: {($0.name!.lowercased()) < $1.name!.lowercased()})
             destination.data = resultCell[categoriesTableView.indexPathForSelectedRow!.row]
             }
         }
