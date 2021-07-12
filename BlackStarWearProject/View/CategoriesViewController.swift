@@ -29,7 +29,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
     func getData() {
         Network.networkAccess.getJsonData(url: API.catigoriesURL) { complition in
             DispatchQueue.main.async {
-                self.result = complition.filter({$0.value.name! != "Коллекции"}).filter({$0.value.name! != "Marketplace"}).filter({$0.value.name != "Последний размер"}).filter({$0.value.name != "Все товары категории"})
+                self.result = complition.filter({$0.value.name! != "Коллекции"}).filter({$0.value.name! != "Marketplace"}).filter({$0.value.name != "Последний размер"}).filter({$0.value.name != "Все товары категории"}).filter({$0.value.name != "Предзаказ"})
                 for el in self.result.values {
                     self.categoriesName.append(el.name!)
                     self.urlImageCategories.append(el.image!)

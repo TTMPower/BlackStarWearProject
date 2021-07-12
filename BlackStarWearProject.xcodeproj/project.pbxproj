@@ -21,6 +21,8 @@
 		3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969955268D7669004D2FC6 /* ModelJson.swift */; };
 		3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969958268D95EC004D2FC6 /* CategoriesCell.swift */; };
 		3AB535F926972E1C005C13DE /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB535F826972E1C005C13DE /* ItemsCollectionViewCell.swift */; };
+		3AB535FB269814E5005C13DE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB535FA269814E5005C13DE /* ActivityIndicator.swift */; };
+		3AB535FD269C3711005C13DE /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB535FC269C3710005C13DE /* CardViewController.swift */; };
 		B6787791D87BD030C5FD9816 /* Pods_BlackStarWearProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C19EE062E8911DC433665621 /* Pods_BlackStarWearProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		3A969955268D7669004D2FC6 /* ModelJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelJson.swift; sourceTree = "<group>"; };
 		3A969958268D95EC004D2FC6 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 		3AB535F826972E1C005C13DE /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
+		3AB535FA269814E5005C13DE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		3AB535FC269C3710005C13DE /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		A4A82D62DFDF87EAD5B577B1 /* Pods-BlackStarWearProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackStarWearProject.debug.xcconfig"; path = "Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject.debug.xcconfig"; sourceTree = "<group>"; };
 		C19EE062E8911DC433665621 /* Pods_BlackStarWearProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlackStarWearProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD5D4D5E608108F3B1D0CBDB /* Pods-BlackStarWearProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackStarWearProject.release.xcconfig"; path = "Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +131,8 @@
 				3A239830268F098000AE6117 /* SubCatViewController.swift */,
 				3A488A4F2696E21B004AC349 /* ItemsViewController.swift */,
 				3AB535F826972E1C005C13DE /* ItemsCollectionViewCell.swift */,
+				3AB535FA269814E5005C13DE /* ActivityIndicator.swift */,
+				3AB535FC269C3710005C13DE /* CardViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -249,11 +255,13 @@
 				3A96993F268D74FF004D2FC6 /* AppDelegate.swift in Sources */,
 				3A969953268D752C004D2FC6 /* Network.swift in Sources */,
 				3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */,
+				3AB535FB269814E5005C13DE /* ActivityIndicator.swift in Sources */,
 				3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */,
 				3A488A502696E21B004AC349 /* ItemsViewController.swift in Sources */,
 				3AB535F926972E1C005C13DE /* ItemsCollectionViewCell.swift in Sources */,
 				3A23982F268F096600AE6117 /* SubCatTableViewCell.swift in Sources */,
 				3A488A4C2695793F004AC349 /* SubcategoryModelJson.swift in Sources */,
+				3AB535FD269C3711005C13DE /* CardViewController.swift in Sources */,
 				3A239831268F098000AE6117 /* SubCatViewController.swift in Sources */,
 				3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */,
 			);

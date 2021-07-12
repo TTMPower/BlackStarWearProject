@@ -20,6 +20,7 @@ class Network {
     static var networkAccess = Network()
     var imageResourse = [ImageResource]()
     var imageSubResourse = [ImageResource]()
+    var productData = [ProductImages]()
     
     
     
@@ -43,7 +44,7 @@ class Network {
         task.resume()
     }
     
-    func getJsonDataSub(url: String, complition: @escaping ([SubCategoryItems]) -> Void) {
+    func getJsonDataSub(url: String, complition: @escaping ([SubCategoryItems],[ProductImages]) -> Void) {
         let urlMain = URL(string: url)
         var request = URLRequest(url: urlMain!)
         request.httpMethod = "GET"
@@ -54,11 +55,15 @@ class Network {
             } else if data != nil {
                 do {
                     let jsonData = JSON(data!)
-                    
-                    let array = jsonData.map {
-                        SubCategoryItems(json: $0.1)
+                    var myData = [SubCategoryItems]()
+                    var product = [ProductImages]()
+                    for el in jsonData {
+                        myData.append(SubCategoryItems(json: el.1))
+                        for item in el.1["productImages"].arrayValue {
+                            product.append(ProductImages(json: item))
+                        }
                     }
-                    complition(array)
+                    complition(myData, product)
                 }
             }
         }
