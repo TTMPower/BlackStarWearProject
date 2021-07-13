@@ -13,12 +13,12 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate {
     var id = [SortOrder]()
     var idInt = Int()
     var stringId = [String]()
-    var itemData = [ItemsData]()
     var itemCell = [SubCategoryItems]()
     var placeholderImage = [ProductImages]()
     var count = Int()
     
     
+    @IBOutlet weak var navigartioBar: UINavigationItem!
     func getIDS() {
         id.append(itemDatas.id!)
         id.forEach {(value) in
@@ -35,23 +35,16 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate {
     
     func getItems() {
         for el in stringId {
-            Network.networkAccess.getJsonDataSub(url: API.items + el) { complition, datas  in
+            Network.networkAccess.getJsonDataSub(url: API.items + el) { complition in
                 DispatchQueue.main.async {
                     self.itemCell += complition
-                    self.placeholderImage += datas
                     self.myCollectionView.reloadData()
                 }
                 
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
+ 
     @IBOutlet weak var myCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +53,7 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate {
         myCollectionView.delegate = self
         getIDS()
         getItems()
-        print(placeholderImage)
+        navigartioBar.title = itemDatas.name
     }
 }
 
@@ -68,6 +61,12 @@ extension ItemsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemCell.count
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+//        let vc = storyboard?.instantiateViewController(identifier: "cardview") as! CardViewController
+//        vc.indexPath = indexPath
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemsCollectionViewCell
@@ -88,11 +87,6 @@ extension ItemsViewController: UICollectionViewDataSource {
         
         let oldPrice = "\(String(format: "%.0f", integer ?? "")) руб."
         let newPrice = "\(String(format: "%.0f", newInteger ?? "")) руб."
-//        if integer == 0 {
-//            cell.priceItemCell.isHidden = true
-//        }
-        print("oldPrice \(oldPrice)")
-        print("integer \(integer)")
         
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPrice)
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
@@ -108,5 +102,29 @@ extension ItemsViewController: UICollectionViewDataSource {
         }
         self.removeSpinner()
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "cardSeuge", sender: indexPath)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let cell = sender as? UICollectionViewCell {
+//            if let indexPaths = myCollectionView.indexPath(for: cell) {
+//                let vc = segue.destination as! CardViewController
+//                vc.itemData = itemCell[indexPaths.row]
+//                vc.imagess = placeholderImage
+//            }
+//        }
+            if segue.identifier == "cardSeuge" {
+                if let detailVC = segue.destination as? CardViewController {
+                    if let paths = myCollectionView.indexPathsForSelectedItems {
+                        let row = paths[0].row
+                        detailVC.itemData = itemCell[row]
+                        for el in stringId{
+                            detailVC.stringID = el
+                        }
+                    }
+                }
+                
+            }
     }
 }

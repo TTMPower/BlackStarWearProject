@@ -21,6 +21,7 @@ class Network {
     var imageResourse = [ImageResource]()
     var imageSubResourse = [ImageResource]()
     var productData = [ProductImages]()
+    var cardResourse = [ImageResource]()
     
     
     
@@ -44,7 +45,7 @@ class Network {
         task.resume()
     }
     
-    func getJsonDataSub(url: String, complition: @escaping ([SubCategoryItems],[ProductImages]) -> Void) {
+    func getJsonDataSub(url: String, complition: @escaping ([SubCategoryItems]) -> Void) {
         let urlMain = URL(string: url)
         var request = URLRequest(url: urlMain!)
         request.httpMethod = "GET"
@@ -54,16 +55,18 @@ class Network {
                 return
             } else if data != nil {
                 do {
-                    let jsonData = JSON(data!)
+                    let jsonData = try! JSON(data: data!)
                     var myData = [SubCategoryItems]()
-                    var product = [ProductImages]()
                     for el in jsonData {
                         myData.append(SubCategoryItems(json: el.1))
-                        for item in el.1["productImages"].arrayValue {
-                            product.append(ProductImages(json: item))
-                        }
                     }
-                    complition(myData, product)
+                    complition(myData)
+//                    let jsonData = JSON(data!)
+//                    var myData = [SubCategoryItems]()
+//                    for el in jsonData {
+//                        myData.append(SubCategoryItems(json: el.1))
+//                    }
+//                    complition(myData)
                 }
             }
         }

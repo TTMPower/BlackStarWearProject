@@ -2,13 +2,13 @@ import SwiftyJSON
 
 typealias ItemsData = [String: SubCategoryItems]
 
-struct SubCategoryItems: Codable {
+class SubCategoryItems: Decodable {
     var name: String?
     var englishName: String?
     var sortOrder: Int?
     var article: String?
-    var description: String?
     var colorName: String?
+    var description1: String?
     var colorImageURL: String?
     var mainImage: String?
     var productImages: [ProductImages]?
@@ -18,43 +18,57 @@ struct SubCategoryItems: Codable {
     var price: String?
     var oldPrice: String?
     var tag: String?
-    var attributes: [Attributes]
-
+    var attributes: [Attributes]?
+    
     init(json: JSON) {
+        
+        self.productImages = [ProductImages]()
+        let productImagesArray = json["productImages"].arrayValue
+        for images in productImagesArray {
+            let value = ProductImages(json: images)
+            print(value)
+            productImages!.append(value)
+        }
+        attributes = [Attributes]()
+        let attributesArray = json["attributes"].arrayValue
+        for el in attributesArray {
+            let value = Attributes(json: el)
+            attributes!.append(value)
+            print(attributes)
+        }
+        
         self.name = json["name"].stringValue
         self.englishName = json["englishName"].stringValue
         self.sortOrder = json["sortOrder"].intValue
         self.article = json["article"].stringValue
-        self.description = json["description"].stringValue
+        self.description1 = json["description"].stringValue
         self.colorName = json["colorName"].stringValue
         self.colorImageURL = json["colorImageURL"].stringValue
         self.mainImage = json["mainImage"].stringValue
-        self.productImages = [ProductImages(json: json["productImages"])]
         self.offers = [Offers(json: json["offers"])]
         self.recommendedProductIDs = json["recommendedProductIDs"].arrayValue.map({ $0.stringValue })
         self.instagramPhotos = json["instagramPhotos"].arrayValue.map({ $0.stringValue })
         self.price = json["price"].stringValue
         self.oldPrice = json["oldPrice"].stringValue
         self.tag = json["tag"].stringValue
-        self.attributes = [Attributes(json: json["attributes"])]
     }
 }
 
-struct ProductImages: Codable {
+class ProductImages: Decodable {
     var imageURL: String?
     var sortOrder: String?
-
+    
     init(json: JSON){
         self.imageURL = json["imageURL"].stringValue
         self.sortOrder = json["sortOrder"].stringValue
     }
 }
 
-struct Offers: Codable {
+class Offers: Decodable {
     var size: String?
     var productOfferID: String?
     var quantity: String?
-
+    
     init(json: JSON){
         self.size = json["size"].stringValue
         self.productOfferID = json["productOfferID"].stringValue
@@ -62,21 +76,21 @@ struct Offers: Codable {
     }
 }
 
-    struct Attributes: Codable {
-        var decorativeElement: String?
-        var image: String?
-        var sezone: String?
-        var sostav: String?
-        var madein: String?
-        var uhod: String?
-
-        init(json: JSON){
-            self.decorativeElement = json["Декоративный элемент"].stringValue
-            self.image = json["Рисунок"].stringValue
-            self.sezone = json["Сезон"].stringValue
-            self.sostav = json["Состав"].stringValue
-            self.madein = json["Страна производителя"].stringValue
-            self.uhod = json["Уход за вещами"].stringValue
-        }
-
+class Attributes: Decodable {
+    var decorativeElement: String?
+    var image: String?
+    var sezone: String?
+    var sostav: String?
+    var madein: String?
+    var uhod: String?
+    
+    init(json: JSON){
+        self.decorativeElement = json["Декоративный элемент"].stringValue
+        self.image = json["Рисунок"].stringValue
+        self.sezone = json["Сезон"].stringValue
+        self.sostav = json["Состав"].stringValue
+        self.madein = json["Страна производителя"].stringValue
+        self.uhod = json["Уход за вещами"].stringValue
     }
+    
+}
