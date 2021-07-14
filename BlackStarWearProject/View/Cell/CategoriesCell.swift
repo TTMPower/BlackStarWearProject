@@ -8,14 +8,17 @@
 import UIKit
 
 class CategoriesCell: UITableViewCell {
+    
+    static let access = CategoriesCell()
+    
     @IBOutlet weak var backgroundCell: UIView!
     @IBOutlet weak var imageCell: UIImageView!
     @IBOutlet weak var labelCell: UILabel!
     
-    func cornerRadius() {
-        imageCell.layer.cornerRadius = (imageCell?.frame.size.width ?? 0) / 2
-        imageCell?.clipsToBounds = true
-        imageCell?.layer.borderWidth = 3.0
-        imageCell?.layer.borderColor = UIColor.lightGray.cgColor
+    func cornerRadius(view: UIView) {
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
+        view.layer.borderWidth = 0.3
+        view.layer.borderColor = UIColor.lightGray.cgColor
     }
 }

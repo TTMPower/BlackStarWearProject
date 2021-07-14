@@ -26,15 +26,23 @@ class SubCategoryItems: Decodable {
         let productImagesArray = json["productImages"].arrayValue
         for images in productImagesArray {
             let value = ProductImages(json: images)
-            print(value)
             productImages!.append(value)
         }
         attributes = [Attributes]()
         let attributesArray = json["attributes"].arrayValue
         for el in attributesArray {
+            if el.isEmpty {
+                print("Error")
+            } else {
             let value = Attributes(json: el)
             attributes!.append(value)
-            print(attributes)
+        }
+        }
+        self.offers = [Offers]()
+        let offersArray = json["offers"].arrayValue
+        for i in offersArray {
+            let value = Offers(json: i)
+            offers!.append(value)
         }
         
         self.name = json["name"].stringValue
@@ -45,7 +53,6 @@ class SubCategoryItems: Decodable {
         self.colorName = json["colorName"].stringValue
         self.colorImageURL = json["colorImageURL"].stringValue
         self.mainImage = json["mainImage"].stringValue
-        self.offers = [Offers(json: json["offers"])]
         self.recommendedProductIDs = json["recommendedProductIDs"].arrayValue.map({ $0.stringValue })
         self.instagramPhotos = json["instagramPhotos"].arrayValue.map({ $0.stringValue })
         self.price = json["price"].stringValue
@@ -83,6 +90,7 @@ class Attributes: Decodable {
     var sostav: String?
     var madein: String?
     var uhod: String?
+    var size: String?
     
     init(json: JSON){
         self.decorativeElement = json["Декоративный элемент"].stringValue
@@ -91,6 +99,7 @@ class Attributes: Decodable {
         self.sostav = json["Состав"].stringValue
         self.madein = json["Страна производителя"].stringValue
         self.uhod = json["Уход за вещами"].stringValue
+        self.size = json["Размер на модели"].stringValue
     }
     
 }
