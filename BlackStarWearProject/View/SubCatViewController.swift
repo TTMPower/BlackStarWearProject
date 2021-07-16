@@ -40,11 +40,12 @@ extension SubCatViewController: UITableViewDataSource {
         let indexPathcell = data?.subcategories[indexPath.row]
         var images = Network.networkAccess.imageSubResourse
         let imageURL = (indexPathcell?.iconImage)!
+        cell.subCategoryImage.kf.indicatorType = .activity
        
         Network.networkAccess.getImage(url: API.mainURL + imageURL) { resourse in
             images.append(resourse)
         }
-        cell.subCategoryImage.kf.setImage(with: images.first, placeholder: UIImage(named: "clothes") ,options: [.scaleFactor(94)])
+        cell.subCategoryImage.kf.setImage(with: images.first, placeholder: UIImage(named: "clothes") ,options: [.scaleFactor(94),.transition(.fade(0.7))])
         cell.subCategoryLabel.text = indexPathcell?.name
         cell.backgroundCell.layer.cornerRadius = 10
         return cell

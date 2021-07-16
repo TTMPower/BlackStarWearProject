@@ -2,7 +2,7 @@ import SwiftyJSON
 
 typealias ItemsData = [String: SubCategoryItems]
 
-class SubCategoryItems: Decodable {
+class SubCategoryItems: Codable {
     var name: String?
     var englishName: String?
     var sortOrder: Int?
@@ -61,7 +61,7 @@ class SubCategoryItems: Decodable {
     }
 }
 
-class ProductImages: Decodable {
+class ProductImages: Codable {
     var imageURL: String?
     var sortOrder: String?
     
@@ -71,7 +71,7 @@ class ProductImages: Decodable {
     }
 }
 
-class Offers: Decodable {
+class Offers: Codable {
     var size: String?
     var productOfferID: String?
     var quantity: String?
@@ -83,7 +83,7 @@ class Offers: Decodable {
     }
 }
 
-class Attributes: Decodable {
+class Attributes: Codable {
     var decorativeElement: String?
     var image: String?
     var sezone: String?

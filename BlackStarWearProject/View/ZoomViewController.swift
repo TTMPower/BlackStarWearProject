@@ -36,11 +36,12 @@ extension ZoomViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "zoomCell", for: indexPath) as! ZoomCollectionViewCell
         let indexImage = itemData?.productImages![indexPath.row].imageURL
+        cell.zoomCell.kf.indicatorType = .activity
         Network.networkAccess.getImage(url: API.mainURL + indexImage!) { resourse in
             self.imagesCell.append(resourse)
         }
         CategoriesCell.access.cornerRadius(view: cell.zoomCell)
-        cell.zoomCell.kf.setImage(with: imagesCell[indexPath.row])
+        cell.zoomCell.kf.setImage(with: imagesCell[indexPath.row], options: [.transition(.fade(0.7))])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

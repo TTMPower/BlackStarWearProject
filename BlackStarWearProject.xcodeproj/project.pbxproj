@@ -13,6 +13,8 @@
 		3A488A502696E21B004AC349 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A488A4F2696E21B004AC349 /* ItemsViewController.swift */; };
 		3A672C77269EF9FA005DF180 /* BasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A672C76269EF9FA005DF180 /* BasketViewController.swift */; };
 		3A672C79269EFD18005DF180 /* BasketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A672C78269EFD18005DF180 /* BasketTableViewCell.swift */; };
+		3A672C8126A0391F005DF180 /* realmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A672C8026A0391F005DF180 /* realmModel.swift */; };
+		3A672C8326A1AE4F005DF180 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A672C8226A1AE4F005DF180 /* ActivityIndicator.swift */; };
 		3A7B5892269DB8DF00C7A104 /* ZoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5891269DB8DE00C7A104 /* ZoomViewController.swift */; };
 		3A7B5894269DB90000C7A104 /* ZoomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5893269DB90000C7A104 /* ZoomCollectionViewCell.swift */; };
 		3A7B5896269ECBDC00C7A104 /* SizesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B5895269ECBDB00C7A104 /* SizesViewController.swift */; };
@@ -26,7 +28,6 @@
 		3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969955268D7669004D2FC6 /* ModelJson.swift */; };
 		3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A969958268D95EC004D2FC6 /* CategoriesCell.swift */; };
 		3AB535F926972E1C005C13DE /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB535F826972E1C005C13DE /* ItemsCollectionViewCell.swift */; };
-		3AB535FB269814E5005C13DE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB535FA269814E5005C13DE /* ActivityIndicator.swift */; };
 		3AB535FF269C4317005C13DE /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB535FE269C4317005C13DE /* CardViewController.swift */; };
 		3AB53601269C4F8C005C13DE /* cardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB53600269C4F8B005C13DE /* cardCollectionViewCell.swift */; };
 		B6787791D87BD030C5FD9816 /* Pods_BlackStarWearProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C19EE062E8911DC433665621 /* Pods_BlackStarWearProject.framework */; };
@@ -39,6 +40,8 @@
 		3A488A4F2696E21B004AC349 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		3A672C76269EF9FA005DF180 /* BasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewController.swift; sourceTree = "<group>"; };
 		3A672C78269EFD18005DF180 /* BasketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTableViewCell.swift; sourceTree = "<group>"; };
+		3A672C8026A0391F005DF180 /* realmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = realmModel.swift; sourceTree = "<group>"; };
+		3A672C8226A1AE4F005DF180 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		3A7B5891269DB8DE00C7A104 /* ZoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomViewController.swift; sourceTree = "<group>"; };
 		3A7B5893269DB90000C7A104 /* ZoomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A7B5895269ECBDB00C7A104 /* SizesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizesViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +57,6 @@
 		3A969955268D7669004D2FC6 /* ModelJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelJson.swift; sourceTree = "<group>"; };
 		3A969958268D95EC004D2FC6 /* CategoriesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCell.swift; sourceTree = "<group>"; };
 		3AB535F826972E1C005C13DE /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
-		3AB535FA269814E5005C13DE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		3AB535FE269C4317005C13DE /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		3AB53600269C4F8B005C13DE /* cardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardCollectionViewCell.swift; sourceTree = "<group>"; };
 		A4A82D62DFDF87EAD5B577B1 /* Pods-BlackStarWearProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlackStarWearProject.debug.xcconfig"; path = "Target Support Files/Pods-BlackStarWearProject/Pods-BlackStarWearProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				3A969952268D752C004D2FC6 /* Network.swift */,
 				3A488A4B2695793F004AC349 /* SubcategoryModelJson.swift */,
 				3A969955268D7669004D2FC6 /* ModelJson.swift */,
+				3A672C8026A0391F005DF180 /* realmModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -155,10 +158,10 @@
 				3AB535FE269C4317005C13DE /* CardViewController.swift */,
 				3A239830268F098000AE6117 /* SubCatViewController.swift */,
 				3A488A4F2696E21B004AC349 /* ItemsViewController.swift */,
-				3AB535FA269814E5005C13DE /* ActivityIndicator.swift */,
 				3A7B5891269DB8DE00C7A104 /* ZoomViewController.swift */,
 				3A7B5895269ECBDB00C7A104 /* SizesViewController.swift */,
 				3A672C76269EF9FA005DF180 /* BasketViewController.swift */,
+				3A672C8226A1AE4F005DF180 /* ActivityIndicator.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -284,15 +287,16 @@
 				3A7B5894269DB90000C7A104 /* ZoomCollectionViewCell.swift in Sources */,
 				3A969953268D752C004D2FC6 /* Network.swift in Sources */,
 				3A969959268D95EC004D2FC6 /* CategoriesCell.swift in Sources */,
-				3AB535FB269814E5005C13DE /* ActivityIndicator.swift in Sources */,
 				3A672C79269EFD18005DF180 /* BasketTableViewCell.swift in Sources */,
 				3A969941268D74FF004D2FC6 /* SceneDelegate.swift in Sources */,
 				3A488A502696E21B004AC349 /* ItemsViewController.swift in Sources */,
 				3AB535F926972E1C005C13DE /* ItemsCollectionViewCell.swift in Sources */,
 				3A23982F268F096600AE6117 /* SubCatTableViewCell.swift in Sources */,
+				3A672C8126A0391F005DF180 /* realmModel.swift in Sources */,
 				3A488A4C2695793F004AC349 /* SubcategoryModelJson.swift in Sources */,
 				3AB53601269C4F8C005C13DE /* cardCollectionViewCell.swift in Sources */,
 				3AB535FF269C4317005C13DE /* CardViewController.swift in Sources */,
+				3A672C8326A1AE4F005DF180 /* ActivityIndicator.swift in Sources */,
 				3A7B5896269ECBDC00C7A104 /* SizesViewController.swift in Sources */,
 				3A239831268F098000AE6117 /* SubCatViewController.swift in Sources */,
 				3A969956268D7669004D2FC6 /* ModelJson.swift in Sources */,

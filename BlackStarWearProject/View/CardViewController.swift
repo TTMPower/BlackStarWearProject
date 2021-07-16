@@ -6,37 +6,46 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol getSizeFromTable: AnyObject {
     func update(text: String)
 }
 
 class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFromTable {
-    func update(text: String) {
-        sizeLabel.text = "Выбран: \(text)"
-    }
     
+    let realm = try! Realm()
     
     static var access = CardViewController()
     var itemData: SubCategoryItems? = nil
-    var images = [String]()
-    var imagess = [String]()
-    var stringID = String()
+    var sizeStr = String()
     var imagesCell = Network.networkAccess.cardResourse
     var count = 0
+    
+    func update(text: String) {
+        sizeLabel.text = "Выбран: \(text)"
+        sizeStr = text
+    }
     
     @IBOutlet weak var AddToBucketOutlet: UIButton!
     @IBOutlet weak var bucketLabel: UILabel!
     @IBAction func AddToBucket(_ sender: Any) {
         if sizeLabel.text != "Выберите размер:" {
-        if count == 0 {
-            bucketLabel.text = "Добавленно! Перейти в корзину?"
-            AddToBucketOutlet.setImage(UIImage(named: "check"), for: .normal)
-            count += 1
-        } else if count == 1 {
-            performSegue(withIdentifier: "bucketSegue", sender: sender)
+            if count == 0 {
+                bucketLabel.text = "Добавленно! Перейти в корзину?"
+                AddToBucketOutlet.setImage(UIImage(named: "check"), for: .normal)
+                let doublePrice = Double((itemData?.price)!)
+                let data = cacheData(value: [itemData?.mainImage! ?? "", itemData?.name ?? "" ,itemData?.oldPrice ?? "", doublePrice!, sizeStr])
+                try! realm.write({
+                    realm.add(data)
+                })
+                
+                count += 1
+            } else if count == 1 {
+                tabBarController?.selectedIndex = 1
+//                performSegue(withIdentifier: "bucketSegue", sender: sender)
+            }
         }
-    }
     }
     
     @IBOutlet weak var uhodOutlet: UILabel!
@@ -121,6 +130,7 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cardCollectionView.dequeueReusableCell(withReuseIdentifier: "cellCard", for: indexPath) as! cardCollectionViewCell
+        cell.cardImage.kf.indicatorType = .activity
         let indexImage = itemData?.productImages![indexPath.row].imageURL
         Network.networkAccess.getImage(url: API.mainURL + indexImage!) { resourse in
             self.imagesCell.append(resourse)
@@ -154,9 +164,9 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
             destination.itemData = itemData
             destination.delegate = self
         }
-        if segue.identifier == "bucketSegue" {
-            guard let destination = segue.destination as? BasketViewController else { return }
-            destination.itemData = itemData
-        }
+//        if segue.identifier == "bucketSegue" {
+//            guard let destination = segue.destination as? BasketViewController else { return }
+//            destination.itemData.append(itemData!)
+//        }
     }
 }

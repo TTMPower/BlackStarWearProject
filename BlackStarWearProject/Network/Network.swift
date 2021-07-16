@@ -22,6 +22,7 @@ class Network {
     var imageSubResourse = [ImageResource]()
     var productData = [ProductImages]()
     var cardResourse = [ImageResource]()
+    var bucketResourse = [ImageResource]()
     
     
     

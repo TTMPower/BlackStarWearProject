@@ -20,7 +20,8 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet weak var navigartioBar: UINavigationItem!
     func getIDS() {
-        id.append(itemDatas.id!)
+        if itemDatas.id != nil {
+            id.append(itemDatas.id!)
         id.forEach {(value) in
             if case .string(let integer) = value {
                 self.stringId.append(integer)
@@ -31,6 +32,7 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate {
         }
         let myString = String(idInt)
         stringId.append(myString)
+    }
     }
     
     func getItems() {
@@ -61,12 +63,6 @@ extension ItemsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return itemCell.count
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        let vc = storyboard?.instantiateViewController(identifier: "cardview") as! CardViewController
-//        vc.indexPath = indexPath
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemsCollectionViewCell
@@ -119,9 +115,6 @@ extension ItemsViewController: UICollectionViewDataSource {
                     if let paths = myCollectionView.indexPathsForSelectedItems {
                         let row = paths[0].row
                         detailVC.itemData = itemCell[row]
-                        for el in stringId{
-                            detailVC.stringID = el
-                        }
                     }
                 }
                 

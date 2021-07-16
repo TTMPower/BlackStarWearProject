@@ -19,9 +19,6 @@ extension UIViewController {
         ai.startAnimating()
         aView?.addSubview(ai)
         self.view.addSubview(aView!)
-//        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { (t) in
-//            self.removeSpinner()
-//        }
     }
     func removeSpinner() {
         aView?.removeFromSuperview()
