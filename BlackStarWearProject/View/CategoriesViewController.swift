@@ -10,11 +10,9 @@ import Kingfisher
 
 class CategoriesViewController: UIViewController, UITableViewDelegate {
     
-    var complit = ModelData()
     var result = ModelData()
     var categoriesName = [String]()
     var urlImageCategories = [String]()
-    var categoriesImage = [ImageResource]()
     
     @IBOutlet weak var categoriesTableView: UITableView!
     override func viewDidLoad() {
@@ -25,11 +23,11 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
         title = "Категории"
         getData()
     }
-//    347,74
+    
     func getData() {
         Network.networkAccess.getJsonData(url: API.catigoriesURL) { complition in
             DispatchQueue.main.async {
-                self.result = complition.filter({$0.value.name != "Последний размер"}).filter({$0.value.name != "Все товары категории"}).filter({$0.value.name != "Предзаказ"}).filter({$0.value.name != "Marketplace"}).filter({$0.value.name != "Коллекции"}).filter({$0.value.name != "Сезонный BOOM"})
+                self.result = complition
                 for el in self.result.values {
                     self.categoriesName.append(el.name!)
                     self.urlImageCategories.append(el.image!)

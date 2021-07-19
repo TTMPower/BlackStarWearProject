@@ -21,7 +21,6 @@ class ZoomViewController: UIViewController, UICollectionViewDelegate {
         super.viewDidLoad()
         zoomCollectionView.delegate = self
         zoomCollectionView.dataSource = self
-        print(CardViewController.access.itemData?.offers)
     }
 }
 

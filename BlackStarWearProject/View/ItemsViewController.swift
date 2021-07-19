@@ -14,25 +14,23 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate {
     var idInt = Int()
     var stringId = [String]()
     var itemCell = [SubCategoryItems]()
-    var placeholderImage = [ProductImages]()
-    var count = Int()
     
     
     @IBOutlet weak var navigartioBar: UINavigationItem!
     func getIDS() {
         if itemDatas.id != nil {
             id.append(itemDatas.id!)
-        id.forEach {(value) in
-            if case .string(let integer) = value {
-                self.stringId.append(integer)
+            id.forEach {(value) in
+                if case .string(let integer) = value {
+                    self.stringId.append(integer)
+                }
+                if case .integer(let int) = value {
+                    self.idInt = int
+                }
             }
-            if case .integer(let int) = value {
-                self.idInt = int
-            }
+            let myString = String(idInt)
+            stringId.append(myString)
         }
-        let myString = String(idInt)
-        stringId.append(myString)
-    }
     }
     
     func getItems() {
@@ -46,7 +44,7 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate {
             }
         }
     }
- 
+    
     @IBOutlet weak var myCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,18 +75,12 @@ extension ItemsViewController: UICollectionViewDataSource {
         }
         
         cell.itemImageCell.kf.setImage(with: images.first, placeholder: UIImage(named: "placeholder")!.kf.blurred(withRadius: 10), options: [.transition(.fade(0.7))])
-        
-        let integer: Double? = Double(index.oldPrice ?? "")
-        let newInteger: Double? = Double(index.price ?? "")
-        
-        let oldPrice = "\(String(format: "%.0f", integer ?? "")) руб."
-        let newPrice = "\(String(format: "%.0f", newInteger ?? "")) руб."
-        
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPrice)
+                
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: index.oldPrice ?? "Error"))
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-        cell.newPriceItemCell.text = newPrice
+        cell.newPriceItemCell.text = Network.networkAccess.fromDoubleToString(double: index.price ?? "Error")
         cell.viewBackground.layer.cornerRadius = 15
-        if integer == nil {
+        if index.oldPrice == nil {
             cell.priceItemCell.isHidden = true
             cell.lowCost.isHidden = true
         } else {
@@ -103,21 +95,13 @@ extension ItemsViewController: UICollectionViewDataSource {
         performSegue(withIdentifier: "cardSeuge", sender: indexPath)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let cell = sender as? UICollectionViewCell {
-//            if let indexPaths = myCollectionView.indexPath(for: cell) {
-//                let vc = segue.destination as! CardViewController
-//                vc.itemData = itemCell[indexPaths.row]
-//                vc.imagess = placeholderImage
-//            }
-//        }
-            if segue.identifier == "cardSeuge" {
-                if let detailVC = segue.destination as? CardViewController {
-                    if let paths = myCollectionView.indexPathsForSelectedItems {
-                        let row = paths[0].row
-                        detailVC.itemData = itemCell[row]
-                    }
+        if segue.identifier == "cardSeuge" {
+            if let detailVC = segue.destination as? CardViewController {
+                if let paths = myCollectionView.indexPathsForSelectedItems {
+                    let row = paths[0].row
+                    detailVC.itemData = itemCell[row]
                 }
-                
             }
+        }
     }
 }

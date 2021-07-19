@@ -13,12 +13,10 @@ class SubCatViewController: UIViewController, UITableViewDelegate {
     var iconSubImage = [String]()
     var nameSubImage = [String]()
     
-    
-    
-
     @IBOutlet weak var navigatorBar: UINavigationItem!
-    
     @IBOutlet weak var subTableView: UITableView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         for el in data?.subcategories ?? [] {
@@ -35,6 +33,7 @@ extension SubCatViewController: UITableViewDataSource {
         return nameSubImage.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subCategoryCell") as! SubCatTableViewCell
         let indexPathcell = data?.subcategories[indexPath.row]
@@ -50,9 +49,13 @@ extension SubCatViewController: UITableViewDataSource {
         cell.backgroundCell.layer.cornerRadius = 10
         return cell
     }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "itemsSegue", sender: self)
     }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ItemsViewController {
             let resultCell = data?.subcategories

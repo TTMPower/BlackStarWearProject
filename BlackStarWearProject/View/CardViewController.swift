@@ -43,7 +43,6 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
                 count += 1
             } else if count == 1 {
                 tabBarController?.selectedIndex = 1
-//                performSegue(withIdentifier: "bucketSegue", sender: sender)
             }
         }
     }
@@ -75,27 +74,22 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
         count = 0
         
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        CategoriesCell.access.cornerRadius(view: backgroundViewTop)
-        CategoriesCell.access.cornerRadius(view: backgroundViewBotton)
-        CategoriesCell.access.cornerRadius(view: backgroundViewMiddle)
-        cardCollectionView.dataSource = self
-        cardCollectionView.delegate = self
-        nameOutlet.text = "Название: \(itemData?.name ?? "Отсутствует")"
-        articulOutlet.text = "Артикул: \(itemData?.article ?? "Отсутствует")"
-        descriprionOutlet.text = "Описание: \(itemData?.description1 ?? "Отсутствует")"
-        colorOutlet.text = "Цвет: \(itemData?.colorName ?? "Отсутствует")"
-        newPrice.text = itemData?.price
-        priceOutlet.text = itemData?.oldPrice
-        
-        
+    
+    func addText() {
+        let filtredDescrition = itemData?.description1?.reduce("") {$0 + (String($1) == "&nbcp;" ? " " : String($1))}
         let newDecorate = itemData?.attributes?.filter({$0.decorativeElement != ""})
         let newCountry = itemData?.attributes?.filter({$0.madein != ""})
         let newPrint = itemData?.attributes?.filter({$0.image != ""})
         let newSeason = itemData?.attributes?.filter({$0.sezone != ""})
         let newUhod = itemData?.attributes?.filter({$0.uhod != ""})
         let newSostav = itemData?.attributes?.filter({$0.sostav != ""})
+        
+        descriprionOutlet.text = "Описание: \(filtredDescrition ?? "Отсутствует")"
+        colorOutlet.text = "Цвет: \(itemData?.colorName ?? "Отсутствует")"
+        newPrice.text = itemData?.price
+        priceOutlet.text = itemData?.oldPrice
+        nameOutlet.text = "Название: \(itemData?.name ?? "Отсутствует")"
+        articulOutlet.text = "Артикул: \(itemData?.article ?? "Отсутствует")"
         decorateElOutlet.text = "Декоративный элемент: \(newDecorate?.first?.decorativeElement ?? "Отсутствует")"
         printOutlet.text = "Тип изображения: \(newPrint?.first?.image ?? "Отсутствует")"
         countryOutlet.text = "Изотовлено: \(newCountry?.first?.madein ?? "Отсутствует")"
@@ -103,23 +97,30 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
         sostavOutlet.text = "Ткань: \(newSostav?.first?.sostav ?? "Отсутствует")"
         seasonOutlet.text = "Сезон: \(newSeason?.first?.sezone ?? "Отсутствует")"
         
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        CategoriesCell.access.cornerRadius(view: backgroundViewTop)
+        CategoriesCell.access.cornerRadius(view: backgroundViewBotton)
+        CategoriesCell.access.cornerRadius(view: backgroundViewMiddle)
+        cardCollectionView.dataSource = self
+        cardCollectionView.delegate = self
+        addText()
         
-        let newPrices: Double! = Double(itemData!.price ?? "")
-        let oldPrices: Double! = Double(itemData!.oldPrice ?? "")
-        let newPriceRub = "\(String(format: "%.0f", newPrices ?? "")) руб."
-        let oldPriceRub = "\(String(format: "%.0f", oldPrices ?? "")) руб."
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPriceRub)
+
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: itemData?.oldPrice ?? "Error"))
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         
-        if oldPrices == nil {
+        
+        if itemData!.oldPrice == nil {
             priceOutlet.isHidden = true
         } else {
             priceOutlet.isHidden = false
             priceOutlet.attributedText = attributeString
             newPrice.isHidden = false
         }
-        newPrice.text = "Цена: \(newPriceRub)"
-        print(itemData?.offers)
+        newPrice.text = "Цена: \(Network.networkAccess.fromDoubleToString(double: itemData?.price ?? "Error"))"
     }
 }
 
@@ -164,9 +165,5 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
             destination.itemData = itemData
             destination.delegate = self
         }
-//        if segue.identifier == "bucketSegue" {
-//            guard let destination = segue.destination as? BasketViewController else { return }
-//            destination.itemData.append(itemData!)
-//        }
     }
 }

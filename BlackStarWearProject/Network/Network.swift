@@ -24,7 +24,11 @@ class Network {
     var cardResourse = [ImageResource]()
     var bucketResourse = [ImageResource]()
     
-    
+    func fromDoubleToString(double: String) -> String {
+        let integer: Double? = Double(double)
+        let price = "\(String(format: "%.0f", integer ?? "")) руб."
+        return price
+    }
     
     func getJsonData(url: String, complition: @escaping (ModelData) -> Void) {
         let urlMain = URL(string: url)
@@ -37,7 +41,8 @@ class Network {
             } else if data != nil {
                 do {
                     let myData = try JSONDecoder().decode(ModelData.self, from: data!)
-                    complition(myData)
+                    let filtredData = myData.filter({$0.value.name != "Последний размер"}).filter({$0.value.name != "Все товары категории"}).filter({$0.value.name != "Предзаказ"}).filter({$0.value.name != "Marketplace"}).filter({$0.value.name != "Коллекции"}).filter({$0.value.name != "Сезонный BOOM"})
+                    complition(filtredData)
                 } catch let error {
                     print(error.localizedDescription)
                 }
@@ -62,12 +67,6 @@ class Network {
                         myData.append(SubCategoryItems(json: el.1))
                     }
                     complition(myData)
-//                    let jsonData = JSON(data!)
-//                    var myData = [SubCategoryItems]()
-//                    for el in jsonData {
-//                        myData.append(SubCategoryItems(json: el.1))
-//                    }
-//                    complition(myData)
                 }
             }
         }
