@@ -9,11 +9,13 @@ import UIKit
 
 class ItemsViewController: UIViewController, UICollectionViewDelegate {
     
+    static let shared = ItemsViewController()
     var itemDatas = Subcategory()
     var id = [SortOrder]()
     var idInt = Int()
     var stringId = [String]()
     var itemCell = [SubCategoryItems]()
+    
     
     
     @IBOutlet weak var navigartioBar: UINavigationItem!
@@ -64,7 +66,6 @@ extension ItemsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemsCollectionViewCell
-        
         let index = itemCell[indexPath.row]
         cell.itemImageCell.kf.indicatorType = .activity
         var images = Network.networkAccess.imageResourse
@@ -75,12 +76,19 @@ extension ItemsViewController: UICollectionViewDataSource {
         }
         
         cell.itemImageCell.kf.setImage(with: images.first, placeholder: UIImage(named: "placeholder")!.kf.blurred(withRadius: 10), options: [.transition(.fade(0.7))])
-                
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: index.oldPrice ?? "Error"))
+        
+        
+        let integer: Double? = Double(index.oldPrice ?? "")
+        let newInteger: Double? = Double(index.price ?? "")
+        
+        let oldPrice = "\(String(format: "%.0f", integer ?? "")) руб."
+        let newPrice = "\(String(format: "%.0f", newInteger ?? "")) руб."
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldPrice)
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-        cell.newPriceItemCell.text = Network.networkAccess.fromDoubleToString(double: index.price ?? "Error")
+        cell.newPriceItemCell.text = newPrice
         cell.viewBackground.layer.cornerRadius = 15
-        if index.oldPrice == nil {
+        if integer == nil {
             cell.priceItemCell.isHidden = true
             cell.lowCost.isHidden = true
         } else {
@@ -93,6 +101,7 @@ extension ItemsViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "cardSeuge", sender: indexPath)
+        myCollectionView.deselectItem(at: indexPath, animated: true)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "cardSeuge" {

@@ -53,6 +53,7 @@ extension SubCatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "itemsSegue", sender: self)
+        subTableView.deselectRow(at: indexPath, animated: true)
     }
     
     

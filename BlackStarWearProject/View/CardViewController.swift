@@ -20,6 +20,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
     var itemData: SubCategoryItems? = nil
     var sizeStr = String()
     var imagesCell = Network.networkAccess.cardResourse
+    var placeHolder = Network.networkAccess.placeHolder
     var count = 0
     
     func update(text: String) {
@@ -30,8 +31,14 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
     @IBOutlet weak var AddToBucketOutlet: UIButton!
     @IBOutlet weak var bucketLabel: UILabel!
     @IBAction func AddToBucket(_ sender: Any) {
-        if sizeLabel.text != "Выберите размер:" {
-            if count == 0 {
+        if count == 0 {
+            let alert = UIAlertController(title: "Выберите размер", message: "Прежде чем добавить вещь в корзину, нужно выбрать размер", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel, handler: {_ in
+                self.dismiss(animated: true)
+            }))
+            present(alert, animated: true, completion: nil)
+        } else if sizeLabel.text != "Выберите размер:" {
+            if count == 2 {
                 bucketLabel.text = "Добавленно! Перейти в корзину?"
                 AddToBucketOutlet.setImage(UIImage(named: "check"), for: .normal)
                 let doublePrice = Double((itemData?.price)!)
@@ -41,7 +48,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
                 })
                 
                 count += 1
-            } else if count == 1 {
+            } else if count == 3 {
                 tabBarController?.selectedIndex = 1
             }
         }
@@ -71,7 +78,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
     @IBAction func sizeAction(_ sender: Any) {
         AddToBucketOutlet.setImage(UIImage(named: "clothes"), for: .normal)
         bucketLabel.text = "Добавить в корзину:"
-        count = 0
+        count = 2
         
     }
     
@@ -99,6 +106,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
         
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         CategoriesCell.access.cornerRadius(view: backgroundViewTop)
@@ -108,12 +116,10 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
         cardCollectionView.delegate = self
         addText()
         
-
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: itemData?.oldPrice ?? "Error"))
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: itemData!.oldPrice!))
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         
-        
-        if itemData!.oldPrice == nil {
+        if itemData?.oldPrice == nil {
             priceOutlet.isHidden = true
         } else {
             priceOutlet.isHidden = false
@@ -126,44 +132,63 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
 
 extension CardViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (itemData?.productImages?.count)!
+        if itemData?.productImages?.isEmpty == true {
+            return 1
+        } else {
+            return itemData?.productImages?.count ?? 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cardCollectionView.dequeueReusableCell(withReuseIdentifier: "cellCard", for: indexPath) as! cardCollectionViewCell
         cell.cardImage.kf.indicatorType = .activity
-        let indexImage = itemData?.productImages![indexPath.row].imageURL
-        Network.networkAccess.getImage(url: API.mainURL + indexImage!) { resourse in
-            self.imagesCell.append(resourse)
-        }
-        CategoriesCell.access.cornerRadius(view: cell.cardImage)
-        cell.cardImage.kf.setImage(with: imagesCell[indexPath.row])
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let frameVC = collectionView.frame
-        let wCell = frameVC.width / CGFloat(1)
-        let hCell = wCell
-        return CGSize(width: wCell, height: hCell)
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ZoomSegue", sender: indexPath)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ZoomSegue" {
-            if let detailVC = segue.destination as? ZoomViewController {
-                if cardCollectionView.indexPathsForSelectedItems != nil {
-                    detailVC.itemData = itemData
+        //        let datas = itemData?.productImages?[indexPath.row].imageURL
+        
+        //        Network.networkAccess.getImage(url: API.mainURL + datas!) { resourse in
+        //                self.imagesCell.append(resourse)
+        //            self.imagesCell.insert(contentsOf: self.placeHolder, at: 0)
+        //        }
+            if itemData?.productImages?.isEmpty == true {
+                Network.networkAccess.getImage(url: API.mainURL + (itemData?.mainImage)!) { resourse in
+                    self.placeHolder = resourse
+                    cell.cardImage.kf.setImage(with: self.placeHolder)
+                }
+            } else {
+                Network.networkAccess.getImage(url: API.mainURL + (itemData?.productImages![indexPath.row].imageURL)!) { resourse in
+                    self.imagesCell.append(resourse)
+                    cell.cardImage.kf.setImage(with: self.imagesCell[indexPath.row])
                 }
             }
+            CategoriesCell.access.cornerRadius(view: cell.cardImage)
+
+            return cell
         }
-        if segue.identifier == "pickerSegue" {
-            guard let destination = segue.destination as? SizesViewController else { return }
-            destination.itemData = itemData
-            destination.delegate = self
+        
+        
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let frameVC = collectionView.frame
+            let wCell = frameVC.width / CGFloat(1)
+            let hCell = wCell
+            return CGSize(width: wCell, height: hCell)
+        }
+        
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            performSegue(withIdentifier: "ZoomSegue", sender: indexPath)
+        }
+        
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "ZoomSegue" {
+                if let detailVC = segue.destination as? ZoomViewController {
+                    if cardCollectionView.indexPathsForSelectedItems != nil {
+                        detailVC.itemData = itemData
+                    }
+                }
+            }
+            if segue.identifier == "pickerSegue" {
+                guard let destination = segue.destination as? SizesViewController else { return }
+                destination.itemData = itemData
+                destination.delegate = self
+            }
         }
     }
-}

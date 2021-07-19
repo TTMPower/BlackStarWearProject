@@ -12,7 +12,8 @@ class ZoomViewController: UIViewController, UICollectionViewDelegate {
     var itemData: SubCategoryItems? = nil
     var indexPaths: IndexPath!
     var imagesCell = Network.networkAccess.cardResourse
-
+    var placeHold = Network.networkAccess.placeHolder
+    
     @IBAction func cancelButton(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -29,19 +30,31 @@ extension ZoomViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (itemData?.productImages?.count)!
+        if itemData?.productImages?.isEmpty == true {
+            return 1
+        } else {
+            return itemData?.productImages?.count ?? 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "zoomCell", for: indexPath) as! ZoomCollectionViewCell
-        let indexImage = itemData?.productImages![indexPath.row].imageURL
+//        let indexImage = itemData?.productImages![indexPath.row].imageURL
         cell.zoomCell.kf.indicatorType = .activity
-        Network.networkAccess.getImage(url: API.mainURL + indexImage!) { resourse in
-            self.imagesCell.append(resourse)
-        }
-        CategoriesCell.access.cornerRadius(view: cell.zoomCell)
-        cell.zoomCell.kf.setImage(with: imagesCell[indexPath.row], options: [.transition(.fade(0.7))])
-        return cell
+        if itemData?.productImages?.isEmpty == true {
+            Network.networkAccess.getImage(url: API.mainURL + (itemData?.mainImage)! , complition: { resourse in
+                self.placeHold = resourse
+                cell.zoomCell.kf.setImage(with: self.placeHold, options: [.transition(.fade(0.7))])
+            })
+    } else {
+        Network.networkAccess.getImage(url: API.mainURL + (itemData?.productImages![indexPath.row].imageURL)!) { resourse in
+    self.imagesCell.append(resourse)
+    cell.zoomCell.kf.setImage(with: self.imagesCell[indexPath.row], options: [.transition(.fade(0.7))])
+    }
+    }
+    CategoriesCell.access.cornerRadius(view: cell.zoomCell)
+    
+    return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let frameVC = collectionView.frame

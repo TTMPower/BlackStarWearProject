@@ -23,11 +23,16 @@ class Network {
     var productData = [ProductImages]()
     var cardResourse = [ImageResource]()
     var bucketResourse = [ImageResource]()
+    var placeHolder: ImageResource? = nil
     
     func fromDoubleToString(double: String) -> String {
         let integer: Double? = Double(double)
-        let price = "\(String(format: "%.0f", integer ?? "")) руб."
-        return price
+        var priceOut = String()
+        if integer != nil {
+            let price = "\(String(format: "%.0f", integer!)) руб."
+            priceOut = price
+        }
+        return priceOut
     }
     
     func getJsonData(url: String, complition: @escaping (ModelData) -> Void) {
@@ -66,7 +71,14 @@ class Network {
                     for el in jsonData {
                         myData.append(SubCategoryItems(json: el.1))
                     }
-                    complition(myData)
+                    let filterData = myData.sorted {
+                        var isSorted = false
+                        if let first = $0.name, let second = $1.name {
+                            isSorted = first < second
+                        }
+                        return isSorted
+                    }
+                    complition(filterData)
                 }
             }
         }

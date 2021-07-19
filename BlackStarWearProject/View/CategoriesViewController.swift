@@ -55,6 +55,7 @@ extension CategoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "cellISubCat", sender: self)
+        categoriesTableView.deselectRow(at: indexPath, animated: true)
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

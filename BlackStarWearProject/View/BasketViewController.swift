@@ -72,7 +72,7 @@ extension BasketViewController: UITableViewDataSource {
         cell.oldPrice.text = cellIndex?.priceOld
         cell.price.text = String(cellIndex!.price)
         cell.sizeBasket.text = "Размер: \(cellIndex?.size ?? "Error")"
-        
+        cell.selectionStyle = .none
         
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: cellIndex?.priceOld ?? "Error"))
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
