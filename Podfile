@@ -7,4 +7,6 @@ target 'BlackStarWearProject' do
 
   # Pods for BlackStarWearProject
 pod 'Kingfisher'
+pod 'SwiftyJSON'
+pod 'RealmSwift', '~>10'
 end
