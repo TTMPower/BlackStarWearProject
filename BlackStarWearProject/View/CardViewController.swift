@@ -41,8 +41,8 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
             if count == 2 {
                 bucketLabel.text = "Добавленно! Перейти в корзину?"
                 AddToBucketOutlet.setImage(UIImage(named: "check"), for: .normal)
-                let doublePrice = Double((itemData?.price)!)
-                let data = cacheData(value: [itemData?.mainImage! ?? "", itemData?.name ?? "" ,itemData?.oldPrice ?? "", doublePrice!, sizeStr])
+                let doublePrice = Double(itemData?.price ?? "")
+                let data = cacheData(value: [itemData?.mainImage ?? "", itemData?.name ?? "" ,itemData?.oldPrice ?? "", doublePrice!, sizeStr])
                 try! realm.write({
                     realm.add(data)
                 })
@@ -116,7 +116,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
         cardCollectionView.delegate = self
         addText()
         
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: itemData!.oldPrice!))
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: itemData?.oldPrice ?? ""))
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         
         if itemData?.oldPrice == nil {

@@ -71,8 +71,8 @@ extension BasketViewController: UITableViewDataSource {
         cell.basketCell.kf.indicatorType = .activity
         cell.basketCell.kf.setImage(with: imagesCell.first, options: [.transition(.fade(0.7))])
         cell.oldPrice.text = cellIndex?.priceOld
-        if cellIndex != nil {
-        cell.price.text = String(cellIndex!.price)
+        if let dataCell = cellIndex?.price {
+        cell.price.text = String(dataCell)
         }
         
         cell.sizeBasket.text = "Размер: \(cellIndex?.size ?? "Error")"

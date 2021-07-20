@@ -26,10 +26,9 @@ class Network {
     var placeHolder: ImageResource? = nil
     
     func fromDoubleToString(double: String) -> String {
-        let integer: Double? = Double(double)
         var priceOut = String()
-        if integer != nil {
-            let price = "\(String(format: "%.0f", integer!)) руб."
+        if let integer = Double(double) {
+            let price = "\(String(format: "%.0f", integer)) руб."
             priceOut = price
         }
         return priceOut

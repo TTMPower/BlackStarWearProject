@@ -20,8 +20,8 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     @IBOutlet weak var navigartioBar: UINavigationItem!
     func getIDS() {
-        if itemDatas.id != nil {
-            id.append(itemDatas.id!)
+        if let unwrapDatas = itemDatas.id {
+            id.append(unwrapDatas)
             id.forEach {(value) in
                 if case .string(let integer) = value {
                     self.stringId.append(integer)
@@ -76,7 +76,7 @@ extension ItemsViewController: UICollectionViewDataSource {
             images.append(resourse)
         }
         
-        cell.itemImageCell.kf.setImage(with: images.first, placeholder: UIImage(named: "placeholder")!.kf.blurred(withRadius: 10), options: [.transition(.fade(0.7))])
+        cell.itemImageCell.kf.setImage(with: images.first, placeholder: UIImage(named: "placeholder")?.kf.blurred(withRadius: 10), options: [.transition(.fade(0.7))])
         
         
         let integer: Double? = Double(index.oldPrice ?? "")
