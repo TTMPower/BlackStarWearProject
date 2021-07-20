@@ -213,14 +213,16 @@
                                                                 <constraint firstAttribute="height" constant="29.5" id="aCr-pc-GZf"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Od4-sk-Po5">
-                                                            <rect key="frame" x="8" y="195" width="154" height="24"/>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Od4-sk-Po5">
+                                                            <rect key="frame" x="18" y="193" width="155" height="26"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="wjz-I2-FJQ"/>
+                                                                <constraint firstAttribute="width" constant="154" id="bBo-sj-yK6"/>
+                                                                <constraint firstAttribute="height" constant="26" id="xqe-BT-52g"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="DamascusBold" family="Damascus" pointSize="16"/>
+                                                            <fontDescription key="fontDescription" name="Galvji-Bold" family="Galvji" pointSize="21"/>
                                                             <color key="textColor" red="1" green="0.31111523790367035" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <size key="shadowOffset" width="0.0" height="0.0"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="d5W-sB-2dw">
                                                             <rect key="frame" x="8" y="169" width="175" height="24"/>
@@ -232,7 +234,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOR-Cl-mvz">
-                                                            <rect key="frame" x="10" y="221" width="171" height="29"/>
+                                                            <rect key="frame" x="10" y="227" width="171" height="23"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
                                                             <color key="textColor" systemColor="systemGrayColor"/>
                                                             <nil key="highlightedColor"/>
@@ -241,18 +243,17 @@
                                                     <color key="backgroundColor" red="0.9410743117" green="0.94123536350000003" blue="0.94106405969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="IOR-Cl-mvz" firstAttribute="leading" secondItem="7tG-z3-Ze0" secondAttribute="leading" constant="10" id="2XD-Tg-zup"/>
-                                                        <constraint firstItem="IOR-Cl-mvz" firstAttribute="top" secondItem="Od4-sk-Po5" secondAttribute="bottom" constant="2" id="8sJ-Wm-n5K"/>
+                                                        <constraint firstItem="IOR-Cl-mvz" firstAttribute="top" secondItem="Od4-sk-Po5" secondAttribute="bottom" constant="8" id="9M4-pz-P8j"/>
                                                         <constraint firstItem="d5W-sB-2dw" firstAttribute="top" secondItem="mCL-ek-8uh" secondAttribute="bottom" id="C3S-NA-hlg"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Od4-sk-Po5" secondAttribute="trailing" constant="29" id="FOf-Dq-QxL"/>
                                                         <constraint firstItem="d5W-sB-2dw" firstAttribute="leading" secondItem="7tG-z3-Ze0" secondAttribute="leadingMargin" id="HXt-Ek-kIl"/>
-                                                        <constraint firstItem="Od4-sk-Po5" firstAttribute="leading" secondItem="d5W-sB-2dw" secondAttribute="leading" id="N33-kh-h9L"/>
+                                                        <constraint firstItem="Od4-sk-Po5" firstAttribute="leading" secondItem="7tG-z3-Ze0" secondAttribute="leading" constant="18" id="Iae-gi-oRa"/>
                                                         <constraint firstItem="n4e-ux-WMh" firstAttribute="top" secondItem="7tG-z3-Ze0" secondAttribute="topMargin" id="P3R-EC-CKY"/>
-                                                        <constraint firstItem="Od4-sk-Po5" firstAttribute="top" secondItem="d5W-sB-2dw" secondAttribute="bottom" constant="2" id="Umc-8l-IWi"/>
+                                                        <constraint firstItem="Od4-sk-Po5" firstAttribute="top" secondItem="d5W-sB-2dw" secondAttribute="bottom" id="XVN-Zu-sxm"/>
                                                         <constraint firstAttribute="trailing" secondItem="d5W-sB-2dw" secondAttribute="trailing" constant="8" id="Xkg-uF-xZX"/>
                                                         <constraint firstItem="n4e-ux-WMh" firstAttribute="trailing" secondItem="7tG-z3-Ze0" secondAttribute="trailingMargin" id="Y5u-de-sRb"/>
                                                         <constraint firstItem="mCL-ek-8uh" firstAttribute="top" secondItem="7tG-z3-Ze0" secondAttribute="top" id="Zh7-89-QWT"/>
-                                                        <constraint firstAttribute="bottom" secondItem="IOR-Cl-mvz" secondAttribute="bottom" constant="10" id="l5K-Ip-pKp"/>
                                                         <constraint firstItem="mCL-ek-8uh" firstAttribute="leading" secondItem="7tG-z3-Ze0" secondAttribute="leading" id="mvn-Eq-fhj"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Od4-sk-Po5" secondAttribute="trailing" constant="18" id="okx-8K-WxD"/>
                                                         <constraint firstAttribute="trailing" secondItem="mCL-ek-8uh" secondAttribute="trailing" id="pCi-wC-H35"/>
                                                         <constraint firstAttribute="trailing" secondItem="IOR-Cl-mvz" secondAttribute="trailing" constant="10" id="xCu-WQ-lAA"/>
                                                     </constraints>
@@ -320,7 +321,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="912"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lus-M5-3Ee">
-                                        <rect key="frame" x="0.0" y="-45" width="414" height="853"/>
+                                        <rect key="frame" x="0.0" y="-45" width="414" height="957"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzy-I3-u8x">
                                                 <rect key="frame" x="1" y="-47" width="413" height="483"/>
@@ -611,7 +612,7 @@
                                             <constraint firstItem="yhp-H0-nXN" firstAttribute="leading" secondItem="lus-M5-3Ee" secondAttribute="leading" constant="7" id="1E9-5j-8UK"/>
                                             <constraint firstItem="Lzy-I3-u8x" firstAttribute="leading" secondItem="lus-M5-3Ee" secondAttribute="leadingMargin" constant="-7" id="4vc-BE-GS7"/>
                                             <constraint firstItem="Lzy-I3-u8x" firstAttribute="centerX" secondItem="yhp-H0-nXN" secondAttribute="centerX" constant="1.5" id="CkJ-em-S5h"/>
-                                            <constraint firstAttribute="bottom" secondItem="yhp-H0-nXN" secondAttribute="bottom" constant="-59" id="IvA-36-YDb"/>
+                                            <constraint firstAttribute="bottom" secondItem="yhp-H0-nXN" secondAttribute="bottom" constant="45" id="IvA-36-YDb"/>
                                             <constraint firstItem="Lzy-I3-u8x" firstAttribute="top" secondItem="lus-M5-3Ee" secondAttribute="top" constant="-47" id="Rbn-p1-PAg"/>
                                             <constraint firstItem="Lzy-I3-u8x" firstAttribute="trailing" secondItem="lus-M5-3Ee" secondAttribute="trailingMargin" constant="8" id="Rd4-wK-X2U"/>
                                             <constraint firstItem="Lzy-I3-u8x" firstAttribute="centerX" secondItem="lus-M5-3Ee" secondAttribute="centerX" constant="0.5" id="g0a-Ma-SIi"/>
@@ -623,7 +624,7 @@
                                 <constraints>
                                     <constraint firstItem="lus-M5-3Ee" firstAttribute="leading" secondItem="4sM-vi-gG6" secondAttribute="leading" id="IJN-Bx-99o"/>
                                     <constraint firstAttribute="trailing" secondItem="lus-M5-3Ee" secondAttribute="trailing" id="QIc-jp-rDR"/>
-                                    <constraint firstAttribute="bottom" secondItem="lus-M5-3Ee" secondAttribute="bottom" constant="104" id="YpN-R6-xC1"/>
+                                    <constraint firstAttribute="bottom" secondItem="lus-M5-3Ee" secondAttribute="bottom" id="YpN-R6-xC1"/>
                                     <constraint firstItem="lus-M5-3Ee" firstAttribute="top" secondItem="4sM-vi-gG6" secondAttribute="top" constant="-45" id="coe-a1-8SA"/>
                                 </constraints>
                             </view>
@@ -1049,7 +1050,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZBA-1T-gH0"/>
+        <segue reference="7eZ-Lx-W3d"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="470_bigs" width="500" height="500"/>
