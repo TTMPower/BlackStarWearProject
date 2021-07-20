@@ -20,8 +20,8 @@ class SubCatViewController: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         for el in data?.subcategories ?? [] {
-            iconSubImage.append(el.iconImage!)
-            nameSubImage.append(el.name!)
+            iconSubImage.append(el.iconImage ?? "")
+            nameSubImage.append(el.name ?? "")
         }
         navigatorBar.title = data?.name
     }
@@ -38,7 +38,7 @@ extension SubCatViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "subCategoryCell") as! SubCatTableViewCell
         let indexPathcell = data?.subcategories[indexPath.row]
         var images = Network.networkAccess.imageSubResourse
-        let imageURL = (indexPathcell?.iconImage)!
+        let imageURL = indexPathcell?.iconImage ?? ""
         cell.subCategoryImage.kf.indicatorType = .activity
        
         Network.networkAccess.getImage(url: API.mainURL + imageURL) { resourse in
@@ -60,7 +60,7 @@ extension SubCatViewController: UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? ItemsViewController {
             let resultCell = data?.subcategories
-            destination.itemDatas = (resultCell?[subTableView.indexPathForSelectedRow!.row])!
+            destination.itemDatas = resultCell?[subTableView.indexPathForSelectedRow?.row ?? 0] ?? Subcategory()
             }
         }
     

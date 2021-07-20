@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemsViewController: UIViewController, UICollectionViewDelegate {
+class ItemsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     static let shared = ItemsViewController()
     var itemDatas = Subcategory()
@@ -67,11 +67,12 @@ extension ItemsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "itemCell", for: indexPath) as! ItemsCollectionViewCell
         let index = itemCell[indexPath.row]
+        let mainImg = index.mainImage ?? ""
         cell.itemImageCell.kf.indicatorType = .activity
         var images = Network.networkAccess.imageResourse
         cell.nameItemCell.text = index.name
         
-        Network.networkAccess.getImage(url: API.mainURL + index.mainImage!) { resourse in
+        Network.networkAccess.getImage(url: API.mainURL + mainImg) { resourse in
             images.append(resourse)
         }
         
@@ -103,6 +104,9 @@ extension ItemsViewController: UICollectionViewDataSource {
         performSegue(withIdentifier: "cardSeuge", sender: indexPath)
         myCollectionView.deselectItem(at: indexPath, animated: true)
     }
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "cardSeuge" {
             if let detailVC = segue.destination as? CardViewController {

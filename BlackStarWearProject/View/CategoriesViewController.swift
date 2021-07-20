@@ -29,8 +29,8 @@ class CategoriesViewController: UIViewController, UITableViewDelegate {
             DispatchQueue.main.async {
                 self.result = complition
                 for el in self.result.values {
-                    self.categoriesName.append(el.name!)
-                    self.urlImageCategories.append(el.image!)
+                    self.categoriesName.append(el.name ?? "")
+                    self.urlImageCategories.append(el.image ?? "")
                     self.categoriesTableView.reloadData()
                 }
             }
@@ -45,7 +45,7 @@ extension CategoriesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoriesCell", for: indexPath as IndexPath) as! CategoriesCell
-        let resultCell = result.values.sorted(by: {$0.name!.lowercased() < $1.name!.lowercased()})[indexPath.row]
+        let resultCell = result.values.sorted(by: {$0.name?.lowercased() ?? "" < $1.name?.lowercased() ?? ""})[indexPath.row]
             cell.labelCell.text = resultCell.name
         cell.backgroundCell.layer.cornerRadius = 10
         
@@ -60,8 +60,8 @@ extension CategoriesViewController: UITableViewDataSource {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? SubCatViewController {
-            let resultCell = result.values.sorted(by: {($0.name!.lowercased()) < $1.name!.lowercased()})
-            destination.data = resultCell[categoriesTableView.indexPathForSelectedRow!.row]
+            let resultCell = result.values.sorted(by: {($0.name?.lowercased() ?? "") < $1.name?.lowercased() ?? ""})
+            destination.data = resultCell[categoriesTableView.indexPathForSelectedRow?.row ?? 0]
             }
         }
     }

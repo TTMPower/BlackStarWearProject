@@ -44,7 +44,7 @@ extension SizesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        currentSize = sizeModel[indexPath.row].size!
+        currentSize = sizeModel[indexPath.row].size ?? ""
         delegate?.update(text: currentSize)
         dismiss(animated: true)
     }

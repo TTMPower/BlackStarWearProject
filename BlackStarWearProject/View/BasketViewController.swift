@@ -63,20 +63,24 @@ extension BasketViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BasketCell") as! BasketTableViewCell
         let cellIndex = resultRealm?[indexPath.row]
+        let indexImg = cellIndex?.imageUrl ?? ""
         cell.basketNameCell.text = cellIndex?.name
-        Network.networkAccess.getImage(url: API.mainURL + (cellIndex?.imageUrl)!) { resourse in
+        Network.networkAccess.getImage(url: API.mainURL + indexImg) { resourse in
             self.imagesCell.insert(resourse, at: 0)
         }
         cell.basketCell.kf.indicatorType = .activity
         cell.basketCell.kf.setImage(with: imagesCell.first, options: [.transition(.fade(0.7))])
         cell.oldPrice.text = cellIndex?.priceOld
+        if cellIndex != nil {
         cell.price.text = String(cellIndex!.price)
+        }
+        
         cell.sizeBasket.text = "Размер: \(cellIndex?.size ?? "Error")"
         cell.selectionStyle = .none
         
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: Network.networkAccess.fromDoubleToString(double: cellIndex?.priceOld ?? "Error"))
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-        cell.price.text = Network.networkAccess.fromDoubleToString(double: String(cellIndex!.price))
+        cell.price.text = Network.networkAccess.fromDoubleToString(double: String(cellIndex?.price ?? 0.0))
         if cellIndex?.priceOld == nil {
             cell.oldPrice.isHidden = true
         } else {

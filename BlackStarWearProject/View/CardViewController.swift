@@ -31,7 +31,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
     @IBOutlet weak var AddToBucketOutlet: UIButton!
     @IBOutlet weak var bucketLabel: UILabel!
     @IBAction func AddToBucket(_ sender: Any) {
-        if count == 0 {
+        if sizeLabel.text == "Выберите размер:" {
             let alert = UIAlertController(title: "Выберите размер", message: "Прежде чем добавить вещь в корзину, нужно выбрать размер", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel, handler: {_ in
                 self.dismiss(animated: true)
@@ -100,7 +100,7 @@ class CardViewController: UIViewController, UICollectionViewDelegate, getSizeFro
         decorateElOutlet.text = "Декоративный элемент: \(newDecorate?.first?.decorativeElement ?? "Отсутствует")"
         printOutlet.text = "Тип изображения: \(newPrint?.first?.image ?? "Отсутствует")"
         countryOutlet.text = "Изотовлено: \(newCountry?.first?.madein ?? "Отсутствует")"
-        uhodOutlet.text = "Рекомендация по уходу: \(newUhod?.first?.uhod ?? "Отсутствует")"
+        uhodOutlet.text = "Рекомендация по уходу: \n\(newUhod?.first?.uhod ?? "Отсутствует")"
         sostavOutlet.text = "Ткань: \(newSostav?.first?.sostav ?? "Отсутствует")"
         seasonOutlet.text = "Сезон: \(newSeason?.first?.sezone ?? "Отсутствует")"
         
@@ -142,19 +142,15 @@ extension CardViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = cardCollectionView.dequeueReusableCell(withReuseIdentifier: "cellCard", for: indexPath) as! cardCollectionViewCell
         cell.cardImage.kf.indicatorType = .activity
-        //        let datas = itemData?.productImages?[indexPath.row].imageURL
-        
-        //        Network.networkAccess.getImage(url: API.mainURL + datas!) { resourse in
-        //                self.imagesCell.append(resourse)
-        //            self.imagesCell.insert(contentsOf: self.placeHolder, at: 0)
-        //        }
             if itemData?.productImages?.isEmpty == true {
-                Network.networkAccess.getImage(url: API.mainURL + (itemData?.mainImage)!) { resourse in
+                let placeholdURL = itemData?.mainImage ?? ""
+                Network.networkAccess.getImage(url: API.mainURL + placeholdURL) { resourse in
                     self.placeHolder = resourse
                     cell.cardImage.kf.setImage(with: self.placeHolder)
                 }
             } else {
-                Network.networkAccess.getImage(url: API.mainURL + (itemData?.productImages![indexPath.row].imageURL)!) { resourse in
+                let indexPathURL = itemData?.productImages?[indexPath.row].imageURL ?? ""
+                Network.networkAccess.getImage(url: API.mainURL + indexPathURL) { resourse in
                     self.imagesCell.append(resourse)
                     cell.cardImage.kf.setImage(with: self.imagesCell[indexPath.row])
                 }
