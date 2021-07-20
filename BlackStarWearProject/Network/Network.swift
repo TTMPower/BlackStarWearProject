@@ -85,8 +85,10 @@ class Network {
         task.resume()
     }
     func getImage(url: String, complition: @escaping (ImageResource) -> Void) {
-        let resourse = ImageResource(downloadURL: URL(string: url)!, cacheKey: url)
+        if let urls = URL(string: url) {
+        let resourse = ImageResource(downloadURL: urls, cacheKey: url)
         complition(resourse)
+        }
     }
     
 }

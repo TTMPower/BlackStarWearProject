@@ -26,7 +26,7 @@ class SubCategoryItems: Codable {
         let productImagesArray = json["productImages"].arrayValue
         for images in productImagesArray {
             let value = ProductImages(json: images)
-            productImages!.append(value)
+            productImages?.append(value)
         }
         attributes = [Attributes]()
         let attributesArray = json["attributes"].arrayValue
@@ -35,14 +35,14 @@ class SubCategoryItems: Codable {
                 print("Error")
             } else {
             let value = Attributes(json: el)
-            attributes!.append(value)
+            attributes?.append(value)
         }
         }
         self.offers = [Offers]()
         let offersArray = json["offers"].arrayValue
         for i in offersArray {
             let value = Offers(json: i)
-            offers!.append(value)
+            offers?.append(value)
         }
         
         self.name = json["name"].stringValue

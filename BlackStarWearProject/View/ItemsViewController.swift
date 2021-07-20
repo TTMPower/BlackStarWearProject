@@ -105,6 +105,10 @@ extension ItemsViewController: UICollectionViewDataSource {
         myCollectionView.deselectItem(at: indexPath, animated: true)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width / 2 - 15, height:  view.frame.width / 1.5)
+    }
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
