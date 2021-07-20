@@ -19,7 +19,7 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     
     @IBOutlet weak var navigartioBar: UINavigationItem!
-    func getIDS() {
+    func getIds() {
         if let unwrapDatas = itemDatas.id {
             id.append(unwrapDatas)
             id.forEach {(value) in
@@ -53,7 +53,7 @@ class ItemsViewController: UIViewController, UICollectionViewDelegate, UICollect
         self.showSpinner()
         myCollectionView.dataSource = self
         myCollectionView.delegate = self
-        getIDS()
+        getIds()
         getItems()
         navigartioBar.title = itemDatas.name
     }
