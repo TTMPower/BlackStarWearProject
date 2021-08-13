@@ -12,8 +12,8 @@ import SwiftyJSON
 
 struct API {
     static var mainURL = "https://blackstarwear.ru/"
-    static var catigoriesURL = "http://blackstarshop.ru/index.php?route=api/v1/categories"
-    static var items = "https://blackstarshop.ru/index.php?route=api/v1/products&cat_id="
+    static var catigoriesURL = "HIDE TOKEN"
+    static var items = "HIDE TOKEN"
 }
 
 class Network {
