@@ -43,7 +43,8 @@ class BasketViewController: UIViewController, UITableViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.basketTableView.reloadData()
-        sumBacket.text = String("\(getSum()) руб.")
+        let formattedText = Network.networkAccess.fromDoubleToString(double: String(getSum()))
+        sumBacket.text = formattedText
         print(forMinus)
         
     }
@@ -94,7 +95,9 @@ extension BasketViewController: UITableViewDataSource {
         if editingStyle == .delete {
             if let item = resultRealm?[indexPath.row] {
                 try! realm.write {
-                    sumBacket.text = String("\(forMinus - item.price) руб.")
+                    let sumString = String("\(forMinus - item.price)")
+                    let sumFormatted = Network.networkAccess.fromDoubleToString(double: sumString)
+                    sumBacket.text = sumFormatted
                     forMinus = forMinus - item.price
                     realm.delete(item)
                     basketTableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
